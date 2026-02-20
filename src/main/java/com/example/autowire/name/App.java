@@ -1,0 +1,13 @@
+package com.example.autowire.name;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class App {
+    public static void main(String[] args) {
+        //in auto-wireByName name of the setter and the object is matched
+        ApplicationContext context=new ClassPathXmlApplicationContext("autowireByName.xml");
+        Car myCar=(Car) context.getBean("myCar");
+        myCar.displayDetail();
+    }
+}
