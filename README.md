@@ -1,94 +1,154 @@
-Spring Core Examples (XML + Annotations)
-This project is a collection of small Spring Core examples meant for revision and interview preparation.
+📘 Spring Core Examples (XML + Annotations)
 
-It focuses on IoC, dependency injection, bean configuration via XML and annotations, and different autowiring modes using simple Java classes.
+This project is a collection of small Spring Core examples created for revision and interview preparation.
 
-Tech Stack
-Java 21 (configured via Maven compiler plugin)
+It focuses on:
 
-Maven build tool with spring-core and spring-context dependencies (version 7.0.4)
+Inversion of Control (IoC)
 
-Pure Spring Core (no Spring Boot)
+Dependency Injection (DI)
 
-pom.xml (key points):
+Bean configuration using XML and Annotations
+
+Different autowiring modes
+
+Understanding loose vs tight coupling
+
+All examples use simple Java classes to clearly demonstrate Spring Core concepts without Spring Boot.
+
+🛠 Tech Stack
+
+Java 21 (configured via Maven Compiler Plugin)
+
+Maven build tool
+
+Spring Core & Spring Context (7.0.4)
+
+Pure Spring Core (❌ No Spring Boot)
+
+📦 Maven Configuration (pom.xml)
 
 groupId: org.example
-
 artifactId: untitled
 
 Dependencies:
+<dependencies>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>7.0.4</version>
+    </dependency>
 
-org.springframework:spring-core:7.0.4
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>7.0.4</version>
+    </dependency>
+</dependencies>
+📁 Project Structure Overview
+src/
+ └── main/
+     ├── java/
+     │   ├── Coupling/
+     │   ├── car/example/
+     │   ├── com/
+     │   └── org/example/
+     └── resources/
+         ├── applicationIoCLooseCouplingExample.xml
+         ├── applicationConstructorInjection.xml
+         ├── applicationSetterInjection.xml
+         ├── autowireByName.xml
+         ├── autowireByType.xml
+         ├── autowireByConstructor.xml
+         └── ComponentScanDemo.xml
+📂 Java Packages
+🔹 Coupling
 
-org.springframework:spring-context:7.0.4
+Demonstrates tight coupling vs loose coupling without Spring.
 
-Project Structure Overview
-Source root: src/main/java
-Configurations: src/main/resources
+Shows why IoC and Dependency Injection are needed.
 
-Main Java packages:
+🔹 car.example
 
-Coupling
+Contains simple domain classes (e.g., Car, Engine) used for DI demonstrations.
 
-Contains loose and tight coupling examples without Spring, to show why IoC is useful.
+🔹 com
 
-car.example
+Used for annotation-based configuration.
 
-Likely simple domain classes (e.g., Car, Engine) used for DI examples.
+Classes annotated with @Component, @Autowired.
 
-com
+🔹 org.example
 
-Annotation-based component examples (used with ComponentScanDemo.xml).
+Contains main classes that:
 
-org.example
+Load ApplicationContext
 
-Probably contains the main methods that bootstrap the ApplicationContext and run demos.
+Run different Spring Core demos
 
-Main XML configuration files under src/main/resources:
+⚙ XML Configuration Files
+File Name	Purpose
+applicationIoCLooseCouplingExample.xml	IoC and loose coupling demo
+applicationConstructorInjection.xml	Constructor-based dependency injection
+applicationSetterInjection.xml	Setter-based dependency injection
+autowireByName.xml	Autowiring by name
+autowireByType.xml	Autowiring by type
+autowireByConstructor.xml	Autowiring using constructor
+ComponentScanDemo.xml	Enables component scanning for annotations
+🧠 Core Concepts Covered
+✅ Inversion of Control (IoC) & Loose Coupling
 
-applicationIoCLooseCouplingExample.xml – IoC and loose coupling example configuration.
+Objects are created and wired by Spring container.
 
-applicationConstructorInjection.xml – Constructor-based dependency injection configuration.
+No manual new keyword.
 
-applicationSetterInjection.xml – Setter-based dependency injection configuration.
+Demonstrated using:
 
-autowireByName.xml – Autowiring beans by name.
+Coupling package
 
-autowireByType.xml – Autowiring beans by type.
+applicationIoCLooseCouplingExample.xml
 
-autowireByConstructor.xml – Autowiring beans via constructor.
+✅ Constructor Injection
 
-ComponentScanDemo.xml – Enables component scanning for annotation-based configuration.
+Dependencies passed via constructor.
 
-Core Concepts Covered
-Inversion of Control (IoC) and Loose Coupling
+Configuration file:
 
-Demonstrates how Spring’s container creates and wires objects instead of manual new calls.
+applicationConstructorInjection.xml
 
-Coupling package + applicationIoCLooseCouplingExample.xml.
+✅ Setter Injection
 
-Constructor Injection
+Dependencies injected using setter methods.
 
-Dependencies passed through constructors.
+Configuration file:
 
-Configuration: applicationConstructorInjection.xml.
+applicationSetterInjection.xml
 
-Setter Injection
+✅ Autowiring
+Mode	Description	Config File
+byName	Matches property name with bean id	autowireByName.xml
+byType	Matches property type with bean type	autowireByType.xml
+constructor	Uses constructor parameters	autowireByConstructor.xml
+✅ Annotation-based Configuration
 
-Dependencies injected via setter methods.
+Uses:
 
-Configuration: applicationSetterInjection.xml.
+@Component
 
-Autowiring
+@Autowired
 
-autowire="byName" – Matches property name with bean id (autowireByName.xml).
+Enabled using:
 
-autowire="byType" – Matches property type with bean type (autowireByType.xml).
+ComponentScanDemo.xml
 
-autowire="constructor" – Uses constructor parameters (autowireByConstructor.xml).
+▶ How to Run
 
-Annotation-based Configuration
+Clone the repository:
 
-Uses @Component, @Autowired, and component scanning.
+git clone https://github.com/veshuSood/springExample.git
 
-Enabled through ComponentScanDemo.xml.
+Open in IDE (IntelliJ / Eclipse)
+
+Run main classes from org.example package.
+
+Change XML config files to test different injection methods.
